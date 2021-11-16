@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Virtual art gallery</title>
+    <meta name="description" content="Digital art gallery">
+    <meta name="keywords" content="Art, virtual, digital, 3D, Gallery, NFT">
+    <meta name="author" content="Craig Manning">
+
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script> -->
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+
+
+  </head>
+  <body>
+    <a-scene> <!--stats>     fog="type: linear; color: #AAA"-->
+
+      <a-assets>
+    		<!-- Frames -->
+        <!-- https://free3d.com/3d-model/-picture-frame-v2--180761.html -->
+    		<a-asset-item id="frame_1_obj" src="/models/Frames/10305_picture_frame_v2_L3.123ccb6bd6b4-0f6a-44a4-84c0-0b1b1626ff22/10305_picture_frame_V2_max2011_it2.obj"></a-asset-item>
+    		<a-asset-item id="frame_1_mtl" src="/models/Frames/10305_picture_frame_v2_L3.123ccb6bd6b4-0f6a-44a4-84c0-0b1b1626ff22/10305_picture_frame_V2_max2011_it2.mtl"></a-asset-item>
+
+        <a-asset-item id="door_frame_1_obj" src="/models/door frame v0-0.obj"></a-asset-item>
+        <a-asset-item id="door_frame_1_mtl" src="/models/door frame v0-0.mtl"></a-asset-item>
+        <img id="marble" src="/models/whmarble.jpg">
+
+    		<!-- Works -->
+        <img id="octopuz" src="/images/oct.png">
+
+
+        <!-- <a-asset-item id="triceratops" src="https://cdn.aframe.io/examples/ar/models/triceratops/scene.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item> -->
+
+
+      </a-assets>
+
+    <a-entity environment="preset: starry"></a-entity>
+      <!-- <a-entity environment="preset: forest; dressingAmount: 500"></a-entity> -->
+      <!-- <a-light type="ambient" color="#445451"></a-light> -->
+
+    <!-- Blue point light, 3 meters in the air. -->
+    <a-light type="point" color="Blue" position="0 5 -11"></a-light>
+    <!-- <a-light type="point" color="Red" intensity="1" position="2 4 4"></a-light> -->
+    <!-- Floor -->
+    <a-plane src="#marble" height="4" width="4" scale="1 1 1" position="0 0 0.1" rotation="-90 0 0"></a-plane>
+    <!-- Column door frame -->
+    <a-entity obj-model="obj: #door_frame_1_obj; mtl: #door_frame_1_mtl" scale="0.005 0.005 0.005" position="0 0 -12" rotation= "-90 00 0"></a-entity>
+
+
+
+    <!-- First wall ...it's a box. -->
+    <a-light type="point" color="Blue" intensity="0.25" position="0 10 -29"></a-light>
+
+    <a-box color="grey" metalness="0.1" depth="1" height="12" width="8" position="0 6.5 -32.5" material="fog: true"></a-box>
+    <a-entity obj-model="obj: #frame_1_obj; mtl: #frame_1_mtl" scale="0.2 0.2 0.2" position="0 2.5 -31.90" rotation= "-90 00 0"></a-entity>
+    <a-plane src="#octopuz" height="8.279" width="6.106" scale="0.5 0.5 0.5" position="0 6.0 -31.950" rotation="0 0 0"></a-plane>
+    <!-- <a-gltf-model src="#triceratops" scale="0.05 0.05 0.05" position="-16 0 -5" rotation= "0 45 0"></a-gltf-model> -->
+
+
+    <a-camera id="camera"></a-camera>
+
+    </a-scene>
+  </body>
+</html>
