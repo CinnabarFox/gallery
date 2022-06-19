@@ -9,6 +9,8 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <!-- <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script> -->
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="/dist/aframe-physics-system.min.js"></script>
+
 
 
   </head>
@@ -27,14 +29,14 @@
 
     		<!-- Works -->
         <img id="octopuz" src="/images/oct.png">
-
-
+		<img id="astronut" src="/images/b803addd4b8c4682b0d60750fc178bbc.png">
+		<img id="city" src="/images/Formerly_Piero_della_Francesca_-_Ideal_City_-_Galleria_Nazionale_delle_Marche_Urbino_2.jpg">
         <!-- <a-asset-item id="triceratops" src="https://cdn.aframe.io/examples/ar/models/triceratops/scene.gltf" response-type="arraybuffer" crossorigin="anonymous"></a-asset-item> -->
 
 
       </a-assets>
 
-    <a-entity environment="preset: starry"></a-entity>
+    <a-entity environment="preset: starry" physics="debug: true"></a-entity>
       <!-- <a-entity environment="preset: forest; dressingAmount: 500"></a-entity> -->
       <!-- <a-light type="ambient" color="#445451"></a-light> -->
 
@@ -42,19 +44,37 @@
     <a-light type="point" color="Blue" position="0 5 -11"></a-light>
     <!-- <a-light type="point" color="Red" intensity="1" position="2 4 4"></a-light> -->
     <!-- Floor -->
-    <a-plane src="#marble" height="4" width="4" scale="1 1 1" position="0 0 0.1" rotation="-90 0 0"></a-plane>
+    <!-- <a-plane src="#marble" height="4" width="4" scale="1 1 1" position="0 0 0.1" rotation="-90 0 0"></a-plane> This freaked out and didn't work?--> 
     <!-- Column door frame -->
-    <a-entity obj-model="obj: #door_frame_1_obj; mtl: #door_frame_1_mtl" scale="0.005 0.005 0.005" position="0 0 -12" rotation= "-90 00 0"></a-entity>
+    <a-entity static-body obj-model="obj: #door_frame_1_obj; mtl: #door_frame_1_mtl" scale="0.005 0.005 0.005" position="0 0 -12" rotation= "-90 00 0"></a-entity>
 
 
 
     <!-- First wall ...it's a box. -->
     <a-light type="point" color="Blue" intensity="0.25" position="0 10 -29"></a-light>
 
-    <a-box color="grey" metalness="0.1" depth="1" height="12" width="8" position="0 6.5 -32.5" material="fog: true"></a-box>
-    <a-entity obj-model="obj: #frame_1_obj; mtl: #frame_1_mtl" scale="0.2 0.2 0.2" position="0 2.5 -31.90" rotation= "-90 00 0"></a-entity>
-    <a-plane src="#octopuz" height="8.279" width="6.106" scale="0.5 0.5 0.5" position="0 6.0 -31.950" rotation="0 0 0"></a-plane>
+    <a-box color="grey" metalness="0.1" depth="3" height="12" width="8" position="0 6.5 -34" material="fog: true"></a-box>
+    <a-entity obj-model="obj: #frame_1_obj; mtl: #frame_1_mtl"  scale="0.2 0.2 0.2" position="0 2.5 -31.90" rotation= "-90 00 0"></a-entity>
+    <a-plane src="#octopuz" metalness="0.3" height="8.279" width="6.106" scale="0.5 0.5 0.5" position="0 6.0 -31.950" rotation="0 0 0"></a-plane>
     <!-- <a-gltf-model src="#triceratops" scale="0.05 0.05 0.05" position="-16 0 -5" rotation= "0 45 0"></a-gltf-model> -->
+
+    <!-- Immovable box -->
+    <!--<a-box static-body position="0 0.5 -5" width="3" height="1" depth="1"></a-box>
+
+    <!-- Dynamic box -->
+    <!--<a-box dynamic-body position="5 0.5 0" width="1" height="1" depth="1"></a-box>
+
+	<!-- second wall  astronaut-->
+    <a-light type="point" color="#ffff99" intensity="0.25" position="14.5 10 -29"></a-light>
+	<a-box color="#666699" metalness="0.9" depth="0.5" height="8" width="8" position="14.5 6.0 -32.40" material="fog: true"></a-box>
+	<a-plane color="#000000" metalness="0.7"  material="fog: true" height="7" width="7" scale="1 1 1" position="14.5 6.0 -31.950" rotation="0 0 0"></a-plane>
+	<a-plane src="#astronut" metalness="0.4" height="6" width="6" scale="1 1 1" position="14.5 6.0 -31.90" rotation="0 0 0"></a-plane>
+	
+	<!-- Third wall a perfect city-->
+    <a-light type="point" color="Blue" intensity="0.25" position="-20 8 -26"></a-light>
+	<a-box color="#ffcc66" metalness="0.1" depth="2" height="8" width="19" position="-20 5.0 -33" material="fog: true"></a-box>
+	<a-plane color="#000000" metalness="0.7"  material="fog: true" height="6" width="17" scale="1 1 1" position="-20 5.0 -31.950" rotation="0 0 0"></a-plane>
+	<a-plane src="#city" height="4.42" width="15.00" scale="1 1 1" position="-20 5.0 -31.80" rotation="0 0 0"></a-plane>
 
 
     <a-camera id="camera"></a-camera>
