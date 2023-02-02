@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: virtual-art.studio
+Token: d911a27d4ae329a692ed1a6e38d38475d7a52c2dba8cfb203ba51b95eec8b847
