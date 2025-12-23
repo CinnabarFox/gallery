@@ -15,7 +15,7 @@
 
   </head>
   <body>
-    <a-scene> <!--stats>     fog="type: linear; color: #AAA"-->
+    <a-scene cursor="rayOrigin: mouse" raycaster="objects: .clickable"> <!--stats>     fog="type: linear; color: #AAA"-->
 
       <a-assets>
     		<!-- Frames -->
@@ -50,7 +50,7 @@
 
 
 
-    <!-- First wall ...it's a box. -->
+    <!-- Center wall - Octopus -->
     <a-light type="point" color="Blue" intensity="0.25" position="0 10 -29"></a-light>
 
     <a-box static-body="shape: box" color="grey" metalness="0.1" depth="3" height="12" width="8" position="0 6.5 -34" material="fog: true"></a-box>
@@ -64,24 +64,36 @@
     <!-- Dynamic box -->
     <!--<a-box dynamic-body position="5 0.5 0" width="1" height="1" depth="1"></a-box>
 
-	<!-- second wall  astronaut-->
+	<!-- First right wall  astronaut-->
     <a-light type="point" color="#ffff99" intensity="0.25" position="14.5 10 -29"></a-light>
 	<a-box static-body="shape: box" color="#666699" metalness="0.9" depth="0.5" height="8" width="8" position="14.5 6.0 -32.40" material="fog: true"></a-box>
 	<a-plane color="#000000" metalness="0.7"  material="fog: true" height="7" width="7" scale="1 1 1" position="14.5 6.0 -31.950" rotation="0 0 0"></a-plane>
 	<a-plane src="#astronut" metalness="0.4" height="6" width="6" scale="1 1 1" position="14.5 6.0 -31.90" rotation="0 0 0"></a-plane>
 	
-	<!-- Third wall a perfect city-->
-    <a-light type="point" color="Blue" intensity="0.25" position="-20 8 -26"></a-light>
+	<!-- First left wall a perfect city-->
+  <a-light type="point" color="Blue" intensity="0.25" position="-20 8 -26"></a-light>
 	<a-box static-body="shape: box" color="#ffcc66" metalness="0.1" depth="2" height="8" width="19" position="-20 5.0 -33" material="fog: true"></a-box>
 	<a-plane color="#000000" metalness="0.7"  material="fog: true" height="6" width="17" scale="1 1 1" position="-20 5.0 -31.950" rotation="0 0 0"></a-plane>
 	<a-plane src="#city" height="4.42" width="15.00" scale="1 1 1" position="-20 5.0 -31.80" rotation="0 0 0"></a-plane>
 
 
+  <!-- Second left wall - Link to process mapping page-->
+  <a-light type="point" color="Blue" intensity="0.253 position="-35 8 -28"></a-light>
+	<a-box static-body="shape: box" color="#483D8B" metalness="0.1" depth="1" height="8" width="4" position="-35 5.0 -32.50" material="fog: true"></a-box>
+	<a-plane color="#000000" metalness="0.7"  material="fog: true" height="6" width="3.5" scale="1 1 1" position="-35.0 5.0 -31.990" rotation="0 0 0"></a-plane>
+	<a-plane class="clickable" navigate-on-click="url: https://process-map.netlify.app/" src="#city" height="5" width="4.00" scale="1 1 1" position="-35 5.0 -31.80" rotation="0 0 0"></a-plane>
+
+
+
+
     <a-camera id="camera"
-		wasd-controls="acceleration: 20"
+		  wasd-controls="acceleration: 20"
     	kinematic-body="shape: capsule"
     	look-controls>
 		</a-camera>
+
+    <!-- User interaction -->
+    <a-entity laser-controls="hand: right"></a-entity>
 
     </a-scene>
   </body>
