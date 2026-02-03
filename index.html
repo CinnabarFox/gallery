@@ -10,7 +10,23 @@
     <!-- <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script> -->
     <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
     <script src="/dist/aframe-physics-system.min.js"></script>
-
+	<script>
+	  AFRAME.registerComponent('navigate-on-click', {
+	    schema: {
+	      url: {type: 'string'}
+	    },
+	    init: function () {
+	      var data = this.data;
+	      var el = this.el;
+	
+	      el.addEventListener('click', function () {
+	        // Use window.location.href to open in the same tab
+	        // Use window.open(data.url, '_blank') for a new tab
+	        window.location.href = data.url;
+	      });
+	    }
+	  });
+	</script>
 
 
   </head>
@@ -78,7 +94,7 @@
 
 
   <!-- Second left wall - Link to process mapping page-->
-  <a-light type="point" color="Blue" intensity="0.253 position="-35 8 -28"></a-light>
+  <a-light type="point" color="Blue" intensity="0.253" position="-35 8 -28"></a-light>
 	<a-box static-body="shape: box" color="#483D8B" metalness="0.1" depth="1" height="8" width="4" position="-35 5.0 -32.50" material="fog: true"></a-box>
 	<a-plane color="#000000" metalness="0.7"  material="fog: true" height="6" width="3.5" scale="1 1 1" position="-35.0 5.0 -31.990" rotation="0 0 0"></a-plane>
 	<a-plane class="clickable" navigate-on-click="url: https://process-map.netlify.app/" src="#city" height="5" width="4.00" scale="1 1 1" position="-35 5.0 -31.80" rotation="0 0 0"></a-plane>
@@ -93,10 +109,11 @@
 		</a-camera>
 
     <!-- User interaction -->
-    <a-entity laser-controls="hand: right"></a-entity>
+    <<a-entity laser-controls="hand: right" raycaster="objects: .clickable"></a-entity> <!-- this may not work right?-->
 
     </a-scene>
   </body>
 </html>
+
 
 
